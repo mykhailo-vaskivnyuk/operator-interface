@@ -1,0 +1,96 @@
+{
+  "name": "operator-assistant",
+  "version": "1.2.1",
+  "description": "Operator assistant application",
+  "main": "index.js",
+  "scripts": {
+    "build": "rimraf build && webpack --mode=production",
+    "watch": "tsc --watch",
+    "wpw": "webpack --watch --mode=development",
+    "dev": "webpack-dev-server --mode=development --open=true --port=3007",
+    "format": "prettier --write \"src/**/*.{ts,tsx}\"",
+    "lint": "eslint \"src/**/*.{ts,tsx}\"",
+    "rel": "standard-version",
+    "test": "jest",
+    "storybook": "start-storybook -p 9009 -s public",
+    "proxy4444": "node ./src/entries/app/assets/helpers/proxy4444",
+    "proxy4445": "node ./src/entries/app/assets/helpers/proxy4445"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://tfs2013.fozzy.lan:22/tfs/DefaultCollection/BitCore/_git/operator-assistant"
+  },
+  "keywords": [
+    "BitCore",
+    "Operator",
+    "Assistant"
+  ],
+  "author": "V.Nortsov",
+  "license": "ISC",
+  "devDependencies": {
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.0.4",
+    "@types/jest": "^26.0.14",
+    "@typescript-eslint/eslint-plugin": "^4.2.0",
+    "@typescript-eslint/parser": "^4.2.0",
+    "eslint": "^7.2.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-config-airbnb-typescript": "^10.0.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jest": "^24.0.2",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.20.6",
+    "eslint-plugin-react-hooks": "^4.0.0",
+    "file-loader": "^6.1.0",
+    "html-webpack-plugin": "^4.4.1",
+    "husky": "^4.3.0",
+    "jest": "^26.4.2",
+    "lint-staged": "^10.4.0",
+    "prettier": "^2.1.2",
+    "rimraf": "^3.0.2",
+    "standard-version": "^9.0.0",
+    "ts-jest": "^26.4.0",
+    "ts-loader": "^8.0.3",
+    "typescript": "^4.0.2",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.11.0",
+    "@material-ui/icons": "^4.9.1",
+    "@material-ui/styles": "^4.10.0",
+    "@storybook/addon-actions": "^6.0.22",
+    "@storybook/addon-knobs": "^6.0.22",
+    "@storybook/react": "^6.0.22",
+    "@types/react": "^16.9.49",
+    "@types/react-dom": "^16.9.8",
+    "@types/react-virtualized": "^9.21.10",
+    "@types/storybook__addon-knobs": "^5.2.1",
+    "@types/storybook__react": "^5.2.1",
+    "cors": "^2.8.5",
+    "i18next": "^19.8.1",
+    "node-fetch": "^2.6.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-i18next": "^11.7.3",
+    "react-virtualized": "^9.22.2"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run test"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "npm run lint",
+      "npm run format"
+    ]
+  }
+}
